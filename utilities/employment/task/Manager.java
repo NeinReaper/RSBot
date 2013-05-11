@@ -12,7 +12,5 @@ public abstract class Manager extends Staff{
 			}
 		}
 	}
-	
-	public abstract boolean condition();
-	
+		
 }
