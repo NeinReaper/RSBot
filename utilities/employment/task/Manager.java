@@ -12,5 +12,4 @@ public abstract class Manager extends Staff{
 			}
 		}
 	}
-		
 }
