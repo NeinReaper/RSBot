@@ -7,8 +7,8 @@ import employment.task.Staff;
 public class TileViewingEmployee extends Staff{
 	@Override
 	public void execute() {
-		for(int xIterator = -72; xIterator <= 72; xIterator++){
-			for(int yIterator = 72; yIterator >= -72; yIterator--){
+		for(int xIterator = -52; xIterator < 52; xIterator++){
+			for(int yIterator = 52; yIterator > -52; yIterator--){
 				ScriptAttributes.tileIterator = ScriptAttributes.myPlayer.getLocation().derive(xIterator, yIterator);
 				if(ScriptAttributes.tileIterator.contains(Mouse.getLocation())) {
 					ScriptAttributes.mouseTile = ScriptAttributes.tileIterator;
