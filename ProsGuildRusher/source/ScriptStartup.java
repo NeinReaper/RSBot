@@ -25,9 +25,8 @@ public class ScriptStartup {
 		Paint.xpGained = 0;
 		Paint.fishFished = 0;
 		Paint.profit = 0;
-		Branch bankBranch = new BankingBranch(new Node[]{new OpenBank(), new DepositFish(), new CloseBank()}),
-				fishBranch = new FishingBranch(new Node[]{new SpotFish(), new InteractWithFish()}),
-				walkBranch = new WalkingBranch(new Node[]{new WalkThere(), new WalkBack()});
+		Branch fishBranch = new FishingBranch(new Node[]{new SpotFish(), new InteractWithFish()}),
+				walkBranch = new WalkingAndBanking(new Node[]{new WalkingNode(), new BankFish()});
 		try {
 			Paint.hideButton = loadImage("http://t2.gstatic.com/images?q=tbn:ANd9GcRHmkRpJu3sk-JUEAGkJ2Gp3R5OrZpwspFP_GA2S3cCKZjP_jS7");
 			Paint.unHideButton = loadImage("http://t1.gstatic.com/images?q=tbn:ANd9GcRHr0Wz9h1erBX1DvuL_Kkclwt6090A2nqUmmjmurcs6M6Y1MBQ");
@@ -50,7 +49,7 @@ public class ScriptStartup {
 			});
 		}
 		
-		employer.load(bankBranch,fishBranch,walkBranch);
+		employer.load(fishBranch,walkBranch);
 	}
 
 	private static HashMap<String, Image> images = new HashMap<String, Image>();
