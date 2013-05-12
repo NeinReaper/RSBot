@@ -2,9 +2,7 @@ package source.userInterface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import employment.jobManagement.NodeEmployment;
-import employment.task.Employer;
 
 
 import antiban.AntiBan;

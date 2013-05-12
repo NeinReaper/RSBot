@@ -1,11 +1,11 @@
-package source.employees;
-
+package employees;
 import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.wrappers.interactive.Player;
 
+import frameWork.staff.Staff;
+
 import source.resources.ScriptAttributes;
-import employment.task.Staff;
 
 public class PlayerViewingEmployee extends Staff{
 
@@ -19,18 +19,12 @@ public class PlayerViewingEmployee extends Staff{
 					ScriptAttributes.playerToDraw = null;
 					ScriptAttributes.logger.logg("PlayerViewingEmployee.execute", "player = null");
 				}
-					
-				//(ScriptAttributes.displayNames)
-					
 			}
 		}
 	}
 
 	@Override
-	public boolean condition() {
+	public boolean activate() {
 		return (ScriptAttributes.highLightPlayers || ScriptAttributes.displayNames);
 	}
-
-	
-
 }

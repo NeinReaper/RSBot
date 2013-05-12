@@ -1,19 +1,16 @@
-package source.managers;
-
+package managers;
+import frameWork.staff.Manager;
+import frameWork.staff.Staff;
 import source.resources.ScriptAttributes;
-import employment.task.Manager;
-import employment.task.Staff;
 
 public class PlayerViewingManager extends Manager{
 
 	public PlayerViewingManager(Staff[] employees) {
 		super(employees);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public boolean condition() {
-		// TODO Auto-generated method stub
+	public boolean activate() {
 		return (!ScriptAttributes.showGui && ScriptAttributes.viewPlayers);
 	}
 

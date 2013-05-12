@@ -19,7 +19,7 @@ public abstract class WaitingNode extends Node{
 	
 	@Override
 	public boolean activate() {
-		return (condition() && (waitTimer == null || (waitTimer != null && waitTimer.getRemaining() < waitingTime/10)));
+		return ((waitTimer == null || (waitTimer != null && waitTimer.getRemaining() < waitingTime/10)) && condition());
 	}
 	@Override
 	public void execute() {

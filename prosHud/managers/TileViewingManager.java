@@ -1,17 +1,15 @@
-package source.managers;
-
+package managers;
+import frameWork.staff.Manager;
+import frameWork.staff.Staff;
 import source.resources.ScriptAttributes;
-import employment.task.Manager;
-import employment.task.Staff;
 
 public class TileViewingManager extends Manager{
 
 	public TileViewingManager(Staff[] employees) {
 		super(employees);
-		// TODO Auto-generated constructor stub
 	}
 	@Override
-	public boolean condition() {
+	public boolean activate() {
 		return ((!ScriptAttributes.showGui && ScriptAttributes.viewMouseTile));
 	}
 
