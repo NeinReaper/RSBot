@@ -1,7 +1,7 @@
 package frameWork.staff;
 public abstract class Staff{
-	protected long timeIdle;//21600000 = 6 hours(default)
-	private long garbageTime = 10000, startTime;
+	protected long timeIdle, startTime;
+	private long garbageTime = 21600000;//21600000 = 6 hours(default)
 	private boolean isGarbage = false, forceCollect = false;
 	
 	/**

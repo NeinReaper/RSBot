@@ -7,15 +7,6 @@ public class Janitor extends WorkingStaff{
 	private long cleanUpTime = 0;//will collect garbage every cleanUpTime milliseconds
 
 	/**
-	 * Collects garbage staff at the given times
-	 *
-	 * @param container list to collect garbage from
-	 */
-	public Janitor(StaffContainer container) {
-		this.container = container;
-	}
-
-	/**
 	 * @param container list to collect garbage from
 	 * @param garbageTime loop time to collect garbage, 
 	 */

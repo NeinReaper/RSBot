@@ -8,7 +8,7 @@ import frameWork.staff.Staff;
 
 public class StaffContainer extends ArrayList<Staff>{
 	private Janitor janitor;
-	private static final int DEFAULT_CLEANUP_TIME = 0;//1 hour
+	private static final int DEFAULT_CLEANUP_TIME = 360000;//1 hour
 	
 	/**
 	 * Contains an arraylist of type Staff
