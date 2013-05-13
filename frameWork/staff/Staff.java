@@ -1,8 +1,14 @@
 package frameWork.staff;
+
+import frameWork.util.Timer;
+
+
+
 public abstract class Staff{
-	protected long timeIdle, startTime;
+	protected long timeIdle, startTime, lastProcess;
 	private long garbageTime = 21600000;//21600000 = 6 hours(default)
-	private boolean isGarbage = false, forceCollect = false;
+	private boolean forceCollect = false, forceRemain = false;
+	private Timer garbageCollection;
 	
 	/**
 	 * Event which can be executed if a condition is met
@@ -11,25 +17,28 @@ public abstract class Staff{
 	public Staff(){
 		timeIdle = 0;
 		startTime = System.currentTimeMillis();
+		garbageCollection = new Timer(garbageTime);
+	}
+	public void execute() {
+		timeIdle = 0;
+		lastProcess = System.currentTimeMillis();
+		process();
 	}
 	
 	public boolean condition() {
-		if(activate()) {
-			timeIdle = 0;
-			isGarbage = false;
-			return true;
-		}
-		timeIdle = System.currentTimeMillis()-startTime;
-		return false;
+		return activate();//need this open condition for future updates
 	}
 	
 	public boolean isGarbage(){
-		isGarbage = timeIdle > garbageTime;
-		return (isGarbage || forceCollect);
+		return (!forceRemain && ((garbageCollection == null && lastProcess > garbageTime/2) || forceCollect));
 	}
 	
-	public void forceCollect(){
-		forceCollect = true;
+	public void setForceCollect(boolean b){
+		forceCollect = b;
+	}
+	
+	public void setForceRemain(boolean b){
+		forceRemain = b;
 	}
 	
 	public void setGarbageTime(long time){
@@ -37,5 +46,5 @@ public abstract class Staff{
 	}
 	
 	public abstract boolean activate();
-	public abstract void execute();
+	public abstract void process();
 }

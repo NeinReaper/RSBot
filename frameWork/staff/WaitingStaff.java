@@ -1,7 +1,7 @@
 package frameWork.staff;
 
-import org.powerbot.game.api.util.Random;
-import org.powerbot.game.api.util.Timer;
+import frameWork.util.Random;
+import frameWork.util.Timer;
 
 public abstract class WaitingStaff extends Staff{
 	private Timer waitTimer;
@@ -20,12 +20,12 @@ public abstract class WaitingStaff extends Staff{
 	}
 	
 	@Override
-	public void execute() {
+	public void process() {
 			waitTimer = new Timer(waitingTime);
 			process();
 	}
 	
-	public abstract void process();
+	public abstract void loop();
 	public abstract boolean check();
 
 }

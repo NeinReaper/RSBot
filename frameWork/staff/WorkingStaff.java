@@ -3,13 +3,13 @@ package frameWork.staff;
 public abstract class WorkingStaff extends Staff implements Runnable{
 	private Thread myThread;
 	private volatile boolean isRunning = false;
-	public abstract void process();
+	public abstract void loop();
 	
 	/**
 	 * Executes if its thread has not been started
 	 */
 	@Override
-	public void execute() {
+	public void process() {
 		if(myThread == null || !myThread.isAlive()) {
 			myThread = new Thread(this);
 			myThread.start();
@@ -20,9 +20,9 @@ public abstract class WorkingStaff extends Staff implements Runnable{
 	 * calls process() within its runnable object
 	 */
 	public void run(){
-		isRunning = condition();
+		isRunning = activate();
 		while(isRunning) {
-			process();
+			loop();
 		}
 	}
 	

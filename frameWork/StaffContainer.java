@@ -17,14 +17,15 @@ public class StaffContainer extends ArrayList<Staff>{
 	public StaffContainer(){
 		super();
 		janitor = new Janitor(this, DEFAULT_CLEANUP_TIME);
+		janitor.setForceRemain(true);
 		submit(janitor);
 	}
 	
 	/**
 	 * loops through all the staff objects and executes them
 	 */
-	public void employ(){
-		for(Staff s : this){
+	public synchronized void employ(){
+		for(Staff s : toArray(new Staff[size()])){
 			if(s != null){
 				if(s.condition())
 					s.execute();
@@ -52,15 +53,27 @@ public class StaffContainer extends ArrayList<Staff>{
 	public void revoke(Staff... staff){
 		for(Staff s : staff){
 			if(s != null){
-				s.forceCollect();
+				s.setForceCollect(true);
 			}
 		}
 	}
 	
+	public void revoke(int id){
+		Staff s = get(id);
+		revoke(s);
+	}
+	
 	public void collectGarbage() {
-		revoke(toArray(new Staff[size()]));
-		janitor.execute();
-		remove(janitor);
+		for(Staff s : this){
+			if(s != null){
+				revoke(s);
+			}
+		}
+		janitor.loop();
+	}
+	
+	public void updateGarbage(){
+		janitor.loop();
 	}
 	
 }

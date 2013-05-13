@@ -12,7 +12,7 @@ public abstract class ContainingStaff extends WorkingStaff{
 		submit(staffs);
 	}
 	@Override
-	public void process() {
+	public void loop() {
 		container.employ();
 	}
 

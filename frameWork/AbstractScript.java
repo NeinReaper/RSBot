@@ -13,29 +13,29 @@ import frameWork.paint.PaintContainer;
 public abstract class AbstractScript extends ActiveScript implements PaintListener, MouseListener{
 	protected volatile StaffContainer container = new StaffContainer();
 	protected PaintContainer paintContainer = new PaintContainer();
-	
+
 	@Override
 	public void onStart(){
 		begin();
 	}
-	
+
 	@Override
 	public void onStop(){
 		end();
 		container.collectGarbage();
 	}
-	
+
 	@Override
 	public int loop() {
 		container.employ();
-		return Random.nextInt(50, 100);
+		return Random.nextInt(50, 150);
 	}
-	
+
 	@Override
 	public void onRepaint(Graphics arg0) {
 		paintContainer.employ(arg0);
 	}
-	
+
 	public abstract void begin();
 	public abstract void end();
 

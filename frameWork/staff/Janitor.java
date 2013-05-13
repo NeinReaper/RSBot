@@ -5,6 +5,7 @@ import frameWork.StaffContainer;
 public class Janitor extends WorkingStaff{
 	private StaffContainer container;//list to cleanup from
 	private long cleanUpTime = 0;//will collect garbage every cleanUpTime milliseconds
+	private int count = 0;
 
 	/**
 	 * @param container list to collect garbage from
@@ -27,8 +28,10 @@ public class Janitor extends WorkingStaff{
 	 * Removes Staff if its been idle for too long(default time is 6 hours)
 	 */
 	@Override
-	public void process() {
-		for(Staff s : container){
+	public void loop() {
+		count++;
+		System.out.println("Garbage Collection ran: "+ count);
+		for(Staff s : container.toArray(new Staff[container.size()])){
 			if(s != null && !(s instanceof Janitor)) {//just incase something goes wrong
 				if(s.isGarbage()) {
 					collect(s);
