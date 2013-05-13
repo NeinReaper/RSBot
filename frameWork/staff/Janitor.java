@@ -12,6 +12,7 @@ public class Janitor extends WorkingStaff{
 	 * @param garbageTime loop time to collect garbage, 
 	 */
 	public Janitor(StaffContainer container, long cleanUpTime){
+		super();
 		this.container = container;
 		this.cleanUpTime = cleanUpTime;
 	}

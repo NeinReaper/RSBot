@@ -24,11 +24,12 @@ public class StaffContainer extends ArrayList<Staff>{
 	/**
 	 * loops through all the staff objects and executes them
 	 */
-	public synchronized void employ(){
+	public void employ(){
 		for(Staff s : toArray(new Staff[size()])){
 			if(s != null){
-				if(s.condition())
+				if(s.condition()) {
 					s.execute();
+				}	
 			}
 		}
 	}

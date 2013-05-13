@@ -1,15 +1,12 @@
 package frameWork;
-
-import java.util.concurrent.locks.Lock;
+import org.powerbot.game.api.util.Random;
 
 import frameWork.staff.Staff;
-import frameWork.util.Random;
 
 public class Employer extends Thread implements Runnable{
 	private StaffContainer container;
 	private boolean isRunning = false;
 	private Thread myThread;
-	private Lock myLock;
 	public Employer(){
 		container = new StaffContainer();
 		//myLock = new ThreadLock;

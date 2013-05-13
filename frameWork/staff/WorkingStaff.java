@@ -4,7 +4,6 @@ public abstract class WorkingStaff extends Staff implements Runnable{
 	private Thread myThread;
 	private volatile boolean isRunning = false;
 	public abstract void loop();
-	
 	/**
 	 * Executes if its thread has not been started
 	 */

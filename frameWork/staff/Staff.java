@@ -1,8 +1,6 @@
 package frameWork.staff;
 
-import frameWork.util.Timer;
-
-
+import org.powerbot.game.api.util.Timer;
 
 public abstract class Staff{
 	protected long timeIdle, startTime, lastProcess;
@@ -47,4 +45,5 @@ public abstract class Staff{
 	
 	public abstract boolean activate();
 	public abstract void process();
+	
 }

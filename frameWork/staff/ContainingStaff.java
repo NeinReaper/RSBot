@@ -8,6 +8,7 @@ public abstract class ContainingStaff extends WorkingStaff{
 	 * Has a container of staffs, which will only be executed from this staff, not the main container
 	 */
 	public ContainingStaff(Staff...staffs){
+		super();
 		container = new StaffContainer();
 		submit(staffs);
 	}
