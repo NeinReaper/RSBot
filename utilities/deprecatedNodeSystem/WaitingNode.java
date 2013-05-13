@@ -1,4 +1,4 @@
-package employment.jobManagement.abstracts;
+package deprecatedNodeSystem;
 import org.powerbot.core.script.job.state.Node;
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Timer;

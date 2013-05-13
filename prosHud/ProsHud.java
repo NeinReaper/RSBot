@@ -18,7 +18,6 @@ description = "Customizeable Hud",
 name = "ProsHud", 
 version = 1.0)
 public class ProsHud extends AbstractScript implements MouseListener{
-	private TileViewingEmployee tvEmployee;
 	@Override
 	public void begin() {
 		SwingUtilities.invokeLater(new Runnable(){
@@ -29,25 +28,8 @@ public class ProsHud extends AbstractScript implements MouseListener{
 			}
 			
 		});
-		tvEmployee = new TileViewingEmployee();
-		container.submit(new TileViewingManager(new Staff[]{tvEmployee}));
+		container.submit(new TileViewingEmployee());
 		paintContainer.add(new ScriptPaint());
-		
-		container.submit(new Staff(){
-
-			@Override
-			public boolean activate() {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public void execute() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
 		
 	}
 

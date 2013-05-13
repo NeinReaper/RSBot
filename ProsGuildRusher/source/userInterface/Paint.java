@@ -8,15 +8,17 @@ import java.awt.RenderingHints;
 import java.util.concurrent.TimeUnit;
 import org.powerbot.game.api.methods.tab.Skills;
 import org.powerbot.game.api.util.Time;
-import source.resources.Attributes;
 
-public class Paint {
+import frameWork.paint.AbstractPaint;
+import source.Attributes;
+
+public class Paint extends AbstractPaint{
 	public static int xpGained, fishFished,profit,startXp,fishXp = 0, fishPrice = 0;
 	public static long startTime;
 	public static String status = "";
 	public static Image hideButton, unHideButton;
 	
-	public static void displayPaint(Graphics arg0) {
+	public void drawPaint(Graphics arg0) {
 		Graphics2D g = (Graphics2D) arg0;
 		g.setRenderingHints( new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF));
 			xpGained = Skills.getExperience(Skills.FISHING)-startXp;

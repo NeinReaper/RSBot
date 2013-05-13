@@ -2,20 +2,22 @@ package source.userInterface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import employment.jobManagement.NodeEmployment;
+
+import deprecatedNodeSystem.NodeEmployment;
+import frameWork.StaffContainer;
 
 
 import antiban.AntiBan;
 
-import source.resources.Attributes;
+import source.Attributes;
 
 public class BeginButtonListener implements ActionListener {
 	private Frame frame;
-	private NodeEmployment employer;
+	private StaffContainer container;
 	public final static int[] FISH_XPS = {110,90,100}, FISH_IDS = {383,377,371};
-	public BeginButtonListener(Frame frame, NodeEmployment employer) {
+	public BeginButtonListener(Frame frame, StaffContainer c) {
 		this.frame = frame;
-		this.employer = employer;
+		container = c;
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -52,7 +54,7 @@ public class BeginButtonListener implements ActionListener {
 		Attributes.checkStats = frame.antiBanPanel.checkStatsBox.isSelected();
 		Attributes.antiBan = new AntiBan(Attributes.useAntiBan, Attributes.checkStats,
 				frame.antiBanPanel.checkPeopleBox.isSelected(),Attributes.DOCK_AREA);
-		employer.load(Attributes.antiBan.myBranch);
+		container.submit(Attributes.antiBan.myManager);
 		Attributes.showPaint = true;
 		Attributes.showGui = false;
 		//ScriptAttributes.fishPrice = GeItem.lookup(ScriptAttributes.fishId).getPrice();

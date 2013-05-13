@@ -1,26 +1,20 @@
-package source.branches;
-
-import org.powerbot.core.script.job.state.Branch;
-import org.powerbot.core.script.job.state.Node;
+package source.staff;
 import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.wrappers.interactive.Player;
+import frameWork.staff.Manager;
+import frameWork.staff.Staff;
+import source.Attributes;
 
-import source.resources.Attributes;
-
-public class FishingBranch extends Branch{
-
-	public FishingBranch(Node[] arg0) {
-		super(arg0);
+public class FishingManager extends Manager{
+	public FishingManager(Staff[] employees) {
+		super(employees);
 	}
 
 	@Override
-	public boolean branch() {
+	public boolean activate() {
 		Player p = Players.getLocal();
 		return ((Game.isLoggedIn() && !Attributes.showGui) &&(p.getInteracting() == null) && (Attributes.DOCK_AREA.contains(p) && !Inventory.isFull()));
 	}
-
-	
-
 }

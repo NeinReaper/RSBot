@@ -1,4 +1,4 @@
-package source.resources;
+package source;
 
 import org.powerbot.game.api.wrappers.Area;
 import org.powerbot.game.api.wrappers.Tile;

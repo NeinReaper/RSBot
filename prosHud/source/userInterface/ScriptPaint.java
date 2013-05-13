@@ -27,7 +27,6 @@ public class ScriptPaint extends AbstractPaint{
 					g.drawString("Distance: " +ScriptAttributes.clickedTile.distance(ScriptAttributes.mouseTile), 0, 325);
 				}	
 			}
-			ScriptAttributes.mouseTile.draw(g);
 			Player p = Players.getLocal();
 			if(p!= null){
 				if(ScriptAttributes.viewDistFromMouseTile) {

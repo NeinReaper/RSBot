@@ -1,13 +1,12 @@
-package source.nodes;
-import org.powerbot.core.script.job.state.Node;
+package source.staff.employees;
+import frameWork.staff.Staff;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
 
-import source.resources.Attributes;
-
+import source.Attributes;
 import walking.WalkingUtil;
 
-public class WalkingNode extends Node{
+public class WalkingEmp extends Staff{
 
 	@Override
 	public boolean activate() {

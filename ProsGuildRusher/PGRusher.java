@@ -1,5 +1,5 @@
-package source;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,26 +7,29 @@ import java.net.URL;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
-import org.powerbot.core.script.job.state.Branch;
-import org.powerbot.core.script.job.state.Node;
+import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.tab.Skills;
-import employment.*;
-import employment.jobManagement.NodeEmployment;
-import source.resources.Attributes;
-import source.userInterface.Frame;
-import source.userInterface.Paint;
-import source.branches.*;
-import source.nodes.*;
+import source.Attributes;
+import source.staff.*;
+import source.staff.employees.*;
+import source.userInterface.*;
+import frameWork.AbstractScript;
+import frameWork.staff.Manager;
+import frameWork.staff.Staff;
 
-public class ScriptStartup {
-
-	public static void startScript(final NodeEmployment employer) {
+@Manifest(authors = { "Protog/Jordan" }, 
+description = "Fishes at the fishing guild", 
+name = "ProsGuildRusher", 
+version = 1.0)
+public class PGRusher extends AbstractScript {
+	@Override
+	public void begin() {
 		Paint.xpGained = 0;
 		Paint.fishFished = 0;
 		Paint.profit = 0;
-		Branch fishBranch = new FishingBranch(new Node[]{new SpotFish(), new InteractWithFish()}),
-				walkBranch = new WalkingAndBanking(new Node[]{new WalkingNode(), new BankFish()});
+		Manager fishManager = new FishingManager(new Staff[]{new SpotFishEmp(), new InteractWithFishEmp()}),
+				walkManager = new WalkingAndBankingManager(new Staff[]{new WalkingEmp(), new BankFishEmp()});
 		try {
 			Paint.hideButton = loadImage("http://t2.gstatic.com/images?q=tbn:ANd9GcRHmkRpJu3sk-JUEAGkJ2Gp3R5OrZpwspFP_GA2S3cCKZjP_jS7");
 			Paint.unHideButton = loadImage("http://t1.gstatic.com/images?q=tbn:ANd9GcRHr0Wz9h1erBX1DvuL_Kkclwt6090A2nqUmmjmurcs6M6Y1MBQ");
@@ -41,7 +44,7 @@ public class ScriptStartup {
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						new Frame(employer).frame.setVisible(Attributes.showGui);
+						new Frame(container).frame.setVisible(Attributes.showGui);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -49,9 +52,24 @@ public class ScriptStartup {
 			});
 		}
 		
-		employer.load(fishBranch,walkBranch);
+		container.submit(fishManager, walkManager);
+		paintContainer.add(new Paint());
+
 	}
 
+	@Override
+	public void end() {
+
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (e.getX() > 5 && e.getX() < 20 && e.getY()>455
+				&& e.getY() < 475) {
+			Attributes.showPaint = !Attributes.showPaint;
+		}
+	}
+	
 	private static HashMap<String, Image> images = new HashMap<String, Image>();
 
 	private static Image loadImage(String url) throws MalformedURLException {
@@ -72,5 +90,6 @@ public class ScriptStartup {
 		}
 		return null;
 	}
+
 
 }

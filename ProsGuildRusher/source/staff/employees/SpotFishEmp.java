@@ -1,13 +1,14 @@
-package source.nodes;
-import org.powerbot.core.script.job.state.Node;
+package source.staff.employees;
+import frameWork.staff.Staff;
 import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.util.Filter;
 import org.powerbot.game.api.wrappers.interactive.NPC;
-import source.resources.Attributes;
+
+import source.Attributes;
 import source.userInterface.Paint;
 
-public class SpotFish extends Node{
+public class SpotFishEmp extends Staff{
 
 	@Override
 	public boolean activate() {

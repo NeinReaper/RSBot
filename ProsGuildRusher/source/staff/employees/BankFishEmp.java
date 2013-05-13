@@ -1,13 +1,12 @@
-package source.nodes;
-import org.powerbot.core.script.job.state.Node;
+package source.staff.employees;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.methods.widget.Bank;
-
-import source.resources.Attributes;
+import frameWork.staff.Staff;
+import source.Attributes;
 import source.userInterface.Paint;
 
-public class BankFish extends Node{
+public class BankFishEmp extends Staff{
 	@Override
 	public boolean activate() {
 		return (Inventory.isFull()) && Attributes.BANK_AREA.contains(Players.getLocal());

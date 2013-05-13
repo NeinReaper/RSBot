@@ -1,12 +1,12 @@
-package source.nodes;
-import org.powerbot.core.script.job.state.Node;
+package source.staff.employees;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.widget.Camera;
-import source.resources.Attributes;
+import frameWork.staff.Staff;
+import source.Attributes;
 import source.userInterface.Frame;
 import source.userInterface.Paint;
 
-public class InteractWithFish extends Node{
+public class InteractWithFishEmp extends Staff{
 
 	@Override
 	public boolean activate() {
@@ -15,9 +15,10 @@ public class InteractWithFish extends Node{
 
 	@Override
 	public void execute() {
+
 		if(Attributes.fishSpot.interact(Frame.clickAction))
 			Paint.status = "Fishing";
-		else	
+		else 	
 			Camera.turnTo(Attributes.fishSpot);
 	}
 

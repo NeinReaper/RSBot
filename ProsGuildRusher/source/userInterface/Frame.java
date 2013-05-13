@@ -9,7 +9,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-import employment.jobManagement.NodeEmployment;
+import deprecatedNodeSystem.NodeEmployment;
+
+import frameWork.StaffContainer;
 
 import antiban.AntiBanPanel;
 public class Frame {
@@ -21,7 +23,7 @@ public class Frame {
 	public AntiBanPanel antiBanPanel;
 	public JComboBox<String> fishSelectionBox = new JComboBox<String>();
 	public JCheckBox dropFishBox = new JCheckBox("Drop Unwanted Fish");
-	public Frame(NodeEmployment employer) {
+	public Frame(StaffContainer c) {
 		frame = new JFrame();
 		contentPane = new JPanel();
 		antiBanPanel = new AntiBanPanel();
@@ -34,7 +36,7 @@ public class Frame {
 		
 		fishSelectionBox.setModel(new DefaultComboBoxModel<String>(FISH_TYPES));
 		
-		beginButton.addActionListener(new BeginButtonListener(this,employer));
+		beginButton.addActionListener(new BeginButtonListener(this,c));
 		
 		frame.setBounds(100, 100, 275, 175);
 		titleLabel.setBounds(5, 5, 135, 20);

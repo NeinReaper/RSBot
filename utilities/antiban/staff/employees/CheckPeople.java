@@ -1,4 +1,4 @@
-package antiban.jobs.nodes;
+package antiban.staff.employees;
 import java.awt.Point;
 import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.methods.input.Mouse;
@@ -7,12 +7,10 @@ import org.powerbot.game.api.util.Filter;
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.wrappers.Area;
 import org.powerbot.game.api.wrappers.interactive.Player;
-
+import frameWork.staff.WaitingStaff;
 import antiban.AntiBan;
 
-import employment.jobManagement.abstracts.WaitingNode;
-
-public class CheckPeople extends WaitingNode {
+public class CheckPeople extends WaitingStaff {
 	
 	private Area viewArea;
 	
@@ -20,7 +18,7 @@ public class CheckPeople extends WaitingNode {
 		viewArea = area;
 	}
 
-	public boolean condition() {
+	public boolean check() {
 		return AntiBan.checkPeople;
 	}
 
