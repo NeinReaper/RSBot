@@ -3,7 +3,7 @@ package frameWork.staff;
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Timer;
 
-public abstract class WaitingStaff extends Staff{
+public class WaitingStaff extends Staff{
 	private Timer waitTimer;
 	private int waitingTime;
 	public WaitingStaff(){
