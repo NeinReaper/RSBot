@@ -9,13 +9,13 @@ import source.userInterface.Paint;
 public class InteractWithFishEmp extends Staff{
 
 	@Override
-	public boolean activate() {
+	public boolean condition() {
 		return (Attributes.fishSpot != null && Attributes.DOCK_AREA.contains(Attributes.fishSpot.getLocation()) && (Players.getLocal().getInteracting() == null));
 	}
 
 	@Override
 	public void execute() {
-
+		super.execute();
 		if(Attributes.fishSpot.interact(Frame.clickAction))
 			Paint.status = "Fishing";
 		else 	

@@ -3,10 +3,12 @@ import java.awt.event.MouseListener;
 
 import javax.swing.SwingUtilities;
 
+import managers.PlayerViewingManager;
 import managers.TileViewingManager;
 import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.wrappers.Tile;
 
+import employees.PlayerViewingEmployee;
 import employees.TileViewingEmployee;
 import frameWork.AbstractScript;
 import frameWork.staff.Staff;
@@ -17,7 +19,7 @@ import source.userInterface.ScriptPaint;
 description = "Customizeable Hud", 
 name = "ProsHud", 
 version = 1.0)
-public class ProsHud extends AbstractScript implements MouseListener{
+public class ProsHud extends AbstractScript{
 	@Override
 	public void begin() {
 		SwingUtilities.invokeLater(new Runnable(){
@@ -28,7 +30,8 @@ public class ProsHud extends AbstractScript implements MouseListener{
 			}
 			
 		});
-		container.submit(new TileViewingEmployee());
+		container.submit(new TileViewingManager(new Staff[]{new TileViewingEmployee()}), 
+													new PlayerViewingManager(new Staff[]{new PlayerViewingEmployee()}));
 		paintContainer.add(new ScriptPaint());
 		
 	}
@@ -39,10 +42,13 @@ public class ProsHud extends AbstractScript implements MouseListener{
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent arg0) {
 		if(ScriptAttributes.viewClickedTile)
 			ScriptAttributes.clickedTile = ScriptAttributes.mouseTile;
+		
 	}
+
+
 	
 
 	

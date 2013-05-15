@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 import frameWork.staff.Janitor;
 import frameWork.staff.Staff;
+import frameWork.staff.WorkingStaff;
 
 
 public class StaffContainer extends ArrayList<Staff>{
 	private Janitor janitor;
 	private static final int DEFAULT_CLEANUP_TIME = 360000;//1 hour
+	private boolean shutDown = false;
 	
 	/**
 	 * Contains an arraylist of type Staff
@@ -25,11 +27,16 @@ public class StaffContainer extends ArrayList<Staff>{
 	 * loops through all the staff objects and executes them
 	 */
 	public void employ(){
-		for(Staff s : toArray(new Staff[size()])){
-			if(s != null){
-				if(s.condition()) {
-					s.execute();
-				}	
+		if(!shutDown){
+			for(Staff s : toArray(new Staff[size()])){
+				if(s != null){
+					if(!shutDown &&s.condition()) {
+						s.execute();
+						if(s instanceof WorkingStaff){
+							((WorkingStaff)s).join();
+						}
+					}	
+				}
 			}
 		}
 	}
@@ -65,6 +72,7 @@ public class StaffContainer extends ArrayList<Staff>{
 	}
 	
 	public void collectGarbage() {
+		shutDown = true;
 		for(Staff s : this){
 			if(s != null){
 				revoke(s);

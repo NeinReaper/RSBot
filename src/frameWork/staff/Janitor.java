@@ -21,7 +21,7 @@ public class Janitor extends WorkingStaff{
 	 * @returns true if its time to collect garbage
 	 */
 	@Override
-	public boolean activate() {
+	public boolean condition() {
 		return timeIdle > cleanUpTime;
 	}
 

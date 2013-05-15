@@ -20,12 +20,9 @@ public abstract class Staff{
 	public void execute() {
 		timeIdle = 0;
 		lastProcess = System.currentTimeMillis();
-		process();
 	}
 	
-	public boolean condition() {
-		return activate();//need this open condition for future updates
-	}
+	public abstract boolean condition();
 	
 	public boolean isGarbage(){
 		return (!forceRemain && ((garbageCollection == null && lastProcess > garbageTime/2) || forceCollect));
@@ -42,8 +39,4 @@ public abstract class Staff{
 	public void setGarbageTime(long time){
 		garbageTime = time;
 	}
-	
-	public abstract boolean activate();
-	public abstract void process();
-	
 }

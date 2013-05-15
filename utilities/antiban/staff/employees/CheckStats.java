@@ -16,7 +16,7 @@ public class CheckStats extends WaitingStaff {
 		return AntiBan.checkStats;
 	}
 
-	public void process() {
+	public void loop() {
 		if(Tabs.STATS.open()) {
 			Task.sleep(Random.nextInt(50, 500));
 			if(fishChild.validate()) {

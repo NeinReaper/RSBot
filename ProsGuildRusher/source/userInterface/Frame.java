@@ -16,7 +16,7 @@ import frameWork.StaffContainer;
 import antiban.AntiBanPanel;
 public class Frame {
 
-	public final static String[] FISH_TYPES = {"Shark", "Lobster", "SwordFish/Tuna"};
+	public final static String[] FISH_TYPES = {"Shark", "Lobster", "SwordFish", "Bass", "Tuna"};
 	public static String fishName = "", clickAction = "";
 	public JFrame frame;
 	private JPanel contentPane;

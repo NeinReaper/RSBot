@@ -17,10 +17,11 @@ public class Paint extends AbstractPaint{
 	public static long startTime;
 	public static String status = "";
 	public static Image hideButton, unHideButton;
-	
+
 	public void drawPaint(Graphics arg0) {
 		Graphics2D g = (Graphics2D) arg0;
 		g.setRenderingHints( new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF));
+		if(!Attributes.showGui) {
 			xpGained = Skills.getExperience(Skills.FISHING)-startXp;
 			fishFished = (int) (xpGained/fishXp);
 			profit = fishFished*fishPrice;
@@ -58,9 +59,10 @@ public class Paint extends AbstractPaint{
 				g.drawString("XP to level("+(Skills.getLevel(Skills.FISHING)+1)+"): "+(Skills.getExperienceToLevel(Skills.FISHING, Skills.getRealLevel(Skills.FISHING)+1)), 215, 425);
 				g.drawString("Percent Until Level("+(Skills.getLevel(Skills.FISHING)+1)+"): "+(int)((double)Skills.getExperienceToLevel(Skills.FISHING , Skills.getRealLevel(Skills.FISHING)+1) / Skills.getExperience(Skills.FISHING) * 1000), 215, 439);
 			}
-		if(hideButton != null && unHideButton != null) {
-			g.drawImage(Attributes.showPaint ?  hideButton : unHideButton, 7, 459, null);
-	
+			if(hideButton != null && unHideButton != null) {
+				g.drawImage(Attributes.showPaint ?  hideButton : unHideButton, 7, 459, null);
+
+			}
 		}
 	}
 }

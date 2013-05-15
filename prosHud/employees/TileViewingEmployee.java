@@ -11,8 +11,10 @@ public class TileViewingEmployee extends Staff{
 	private Tile tileIterator;
 	@Override
 	public void execute() {
+		super.execute();
 		Player p = Players.getLocal();
 		if(p!= null){
+			//Walking.getc
 			for(int xIterator = -52; xIterator < 52; xIterator++){
 				for(int yIterator = 52; yIterator > -52; yIterator--){
 					tileIterator = p.getLocation().derive(xIterator, yIterator);
@@ -25,7 +27,7 @@ public class TileViewingEmployee extends Staff{
 	}
 
 	@Override
-	public boolean activate() {
+	public boolean condition() {
 		return (!ScriptAttributes.mouseTile.contains(Mouse.getLocation()));
 	}
 

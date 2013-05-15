@@ -18,11 +18,14 @@ public class CheckPeople extends WaitingStaff {
 		viewArea = area;
 	}
 
-	public boolean check() {
-		return AntiBan.checkPeople;
+	@Override
+	public boolean condition() {
+		return (super.condition() && AntiBan.checkPeople);
 	}
 
-	public void process() {
+	@Override
+	public void execute() {
+		super.execute();
 		Player p = Players.getNearest(new Filter<Player>(){
 
 			@Override

@@ -10,7 +10,7 @@ public class PlayerViewingManager extends Manager{
 	}
 
 	@Override
-	public boolean activate() {
+	public boolean condition() {
 		return (!ScriptAttributes.showGui && ScriptAttributes.viewPlayers);
 	}
 

@@ -11,20 +11,17 @@ public class PlayerViewingEmployee extends Staff{
 
 	@Override
 	public void execute() {
+		super.execute();
 		for(Player p : Players.getLoaded()) {
 			if(p != null){
-				if(p.contains(Mouse.getLocation()))
+				if(p.getModel().contains(Mouse.getLocation()))
 					ScriptAttributes.playerToDraw = p;
-				else {
-					ScriptAttributes.playerToDraw = null;
-					ScriptAttributes.logger.logg("PlayerViewingEmployee.execute", "player = null");
-				}
 			}
 		}
 	}
 
 	@Override
-	public boolean activate() {
+	public boolean condition() {
 		return (ScriptAttributes.highLightPlayers || ScriptAttributes.displayNames);
 	}
 }

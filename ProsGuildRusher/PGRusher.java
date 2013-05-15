@@ -52,14 +52,14 @@ public class PGRusher extends AbstractScript {
 			});
 		}
 		
-		container.submit(fishManager, walkManager);
+		container.submit(new DropFishEmp(),fishManager, walkManager);
 		paintContainer.add(new Paint());
 
 	}
 
 	@Override
 	public void end() {
-
+		
 	}
 	
 	@Override

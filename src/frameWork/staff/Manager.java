@@ -10,7 +10,8 @@ public abstract class Manager extends Staff{
 		container.submit(employees);
 	}
 	
-	public void process(){
+	public void execute(){
+		super.execute();
 		container.employ();
 	}
 }

@@ -15,17 +15,15 @@ public abstract class WaitingStaff extends Staff{
 	}
 	
 	@Override
-	public boolean activate() {
-		return ((waitTimer == null || (waitTimer != null && waitTimer.getRemaining() < waitingTime/10)) && check());
+	public boolean condition() {
+		return ((waitTimer == null || (waitTimer != null && waitTimer.getRemaining() < waitingTime/10)));
 	}
 	
 	@Override
-	public void process() {
-			waitTimer = new Timer(waitingTime);
-			loop();
+	public void execute() {
+		super.execute();
+		waitTimer = new Timer(waitingTime);
 	}
 	
-	public abstract void loop();
-	public abstract boolean check();
 
 }

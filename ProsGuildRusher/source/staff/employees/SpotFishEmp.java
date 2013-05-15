@@ -11,12 +11,13 @@ import source.userInterface.Paint;
 public class SpotFishEmp extends Staff{
 
 	@Override
-	public boolean activate() {
+	public boolean condition() {
 		return (Players.getLocal().getInteracting() == null || Attributes.fishSpot == null);
 	}
 
 	@Override
 	public void execute() {
+		super.execute();
 		Paint.status = "Looking for Fish";
 		Attributes.fishSpot = NPCs.getNearest(new Filter<NPC>() {
 			@Override

@@ -8,7 +8,7 @@ public class AntiBanManager extends Manager{
 	}
 
 	@Override
-	public boolean activate() {
+	public boolean condition() {
 		return AntiBan.useAntiBan;
 	}
 }

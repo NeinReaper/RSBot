@@ -1,4 +1,5 @@
 package source.staff;
+
 import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
@@ -9,7 +10,7 @@ import frameWork.staff.Staff;
 
 import source.Attributes;
 
-public class WalkingAndBankingManager extends Manager{
+public class WalkingAndBankingManager extends Manager {
 
 	public WalkingAndBankingManager(Staff[] employees) {
 		super(employees);
@@ -17,21 +18,15 @@ public class WalkingAndBankingManager extends Manager{
 	}
 
 	@Override
-	public boolean activate() {
-		return (
-				(Game.isLoggedIn() && !Attributes.showGui)
-			   ) && 
-			   		((
-			   				(Inventory.isFull() || Bank.isOpen()) && 
-			   				Attributes.BANK_AREA.contains(Players.getLocal())) || 
-			   					(
-			   							(Players.getLocal().getAnimation() == -1) && 
-			   							(Inventory.isFull() && !Attributes.BANK_AREA.contains(Players.getLocal())) || 
-			   								(!Inventory.isFull() && 
-			   										!Attributes.DOCK_AREA.contains(Players.getLocal()))
-			   					)
-				);
+	public boolean condition() {
+		return ((Game.isLoggedIn() && !Attributes.showGui))
+				&& (((Inventory.isFull() || Bank.isOpen()) && Attributes.BANK_AREA
+						.contains(Players.getLocal())) || ((Players.getLocal()
+						.getAnimation() == -1)
+						&& (Inventory.isFull() && !Attributes.BANK_AREA
+								.contains(Players.getLocal())) || (!Inventory
+						.isFull() && !Attributes.DOCK_AREA.contains(Players
+						.getLocal()))));
 	}
-
 
 }

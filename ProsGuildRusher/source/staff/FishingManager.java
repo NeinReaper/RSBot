@@ -13,8 +13,8 @@ public class FishingManager extends Manager{
 	}
 
 	@Override
-	public boolean activate() {
-		Player p = Players.getLocal();
-		return ((Game.isLoggedIn() && !Attributes.showGui) &&(p.getInteracting() == null) && (Attributes.DOCK_AREA.contains(p) && !Inventory.isFull()));
+	public boolean condition() {
+		Player p;
+		return ((Game.isLoggedIn() && !Attributes.showGui) && ((p = Players.getLocal())!= null) &&(p.getInteracting() == null) && (Attributes.DOCK_AREA.contains(p) && !Inventory.isFull()));
 	}
 }

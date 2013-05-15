@@ -9,7 +9,7 @@ public class TileViewingManager extends Manager{
 		super(employees);
 	}
 	@Override
-	public boolean activate() {
+	public boolean condition() {
 		return ((!ScriptAttributes.showGui && ScriptAttributes.viewMouseTile));
 	}
 

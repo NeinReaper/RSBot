@@ -8,12 +8,13 @@ import source.userInterface.Paint;
 
 public class BankFishEmp extends Staff{
 	@Override
-	public boolean activate() {
+	public boolean condition() {
 		return (Inventory.isFull()) && Attributes.BANK_AREA.contains(Players.getLocal());
 				
 	}
 	@Override
 	public void execute() {
+		super.execute();
 		if(Bank.open()) {
 			Paint.status = "opening bank";
 			if(Bank.depositInventory()) {
@@ -24,6 +25,6 @@ public class BankFishEmp extends Staff{
 			}
 				
 		}
-			
+
 	}
 }
