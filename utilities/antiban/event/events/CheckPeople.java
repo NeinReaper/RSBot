@@ -1,4 +1,4 @@
-package antiban.staff.employees;
+package antiban.event.events;
 import java.awt.Point;
 import org.powerbot.core.script.job.Task;
 import org.powerbot.game.api.methods.input.Mouse;

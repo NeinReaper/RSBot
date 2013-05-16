@@ -1,4 +1,4 @@
-package source.staff.employees;
+package source.event.events;
 import frameWork.event.Event;
 
 import org.powerbot.game.api.methods.interactive.NPCs;
@@ -9,7 +9,7 @@ import org.powerbot.game.api.wrappers.interactive.NPC;
 import source.Attributes;
 import source.userInterface.Paint;
 
-public class SpotFishEmp extends Event{
+public class SpotFishEvent extends Event{
 
 	@Override
 	public boolean condition() {

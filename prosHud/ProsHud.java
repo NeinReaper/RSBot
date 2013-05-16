@@ -1,17 +1,11 @@
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.SwingUtilities;
-
-import managers.PlayerViewingManager;
-import managers.TileViewingManager;
 import org.powerbot.game.api.Manifest;
-import org.powerbot.game.api.wrappers.Tile;
-
-import employees.PlayerViewingEmployee;
-import employees.TileViewingEmployee;
 import frameWork.AbstractScript;
 import frameWork.event.Event;
+import source.event.*;
+import source.event.events.PlayerViewingEvent;
+import source.event.events.TileViewingEvent;
 import source.resources.ScriptAttributes;
 import source.userInterface.GUI;
 import source.userInterface.ScriptPaint;
@@ -30,8 +24,8 @@ public class ProsHud extends AbstractScript{
 			}
 			
 		});
-		container.submit(new TileViewingManager(new Event[]{new TileViewingEmployee()}), 
-													new PlayerViewingManager(new Event[]{new PlayerViewingEmployee()}));
+		container.submit(new TileViewingParent(new Event[]{new TileViewingEvent()}),
+				new PlayerViewingParent(new Event[]{new PlayerViewingEvent()}));
 		paintContainer.add(new ScriptPaint());
 		
 	}

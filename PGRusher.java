@@ -11,8 +11,8 @@ import org.powerbot.game.api.Manifest;
 import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.tab.Skills;
 import source.Attributes;
-import source.staff.*;
-import source.staff.employees.*;
+import source.event.*;
+import source.event.events.*;
 import source.userInterface.*;
 import frameWork.AbstractScript;
 import frameWork.event.Event;
@@ -28,8 +28,9 @@ public class PGRusher extends AbstractScript {
 		Paint.xpGained = 0;
 		Paint.fishFished = 0;
 		Paint.profit = 0;
-		ParentEvent fishManager = new FishingManager(new Event[]{new SpotFishEmp(), new InteractWithFishEmp()}),
-				walkManager = new WalkingAndBankingManager(new Event[]{new WalkingEmp(), new BankFishEmp()});
+		ParentEvent fishParent = new FishingParent(new Event[]{new SpotFishEvent(), new FishEvent()}),
+				walkParent = new WalkingParent(new Event[]{new WalkingEvent(), new BankEvent()}),
+				bankParent = new BankingParent(new Event[]{new BankEvent()});
 		try {
 			Paint.hideButton = loadImage("http://t2.gstatic.com/images?q=tbn:ANd9GcRHmkRpJu3sk-JUEAGkJ2Gp3R5OrZpwspFP_GA2S3cCKZjP_jS7");
 			Paint.unHideButton = loadImage("http://t1.gstatic.com/images?q=tbn:ANd9GcRHr0Wz9h1erBX1DvuL_Kkclwt6090A2nqUmmjmurcs6M6Y1MBQ");
@@ -52,7 +53,7 @@ public class PGRusher extends AbstractScript {
 			});
 		}
 		
-		container.submit(new DropFishEmp(),fishManager, walkManager);
+		container.submit(new DropFishEvent(),fishParent,walkParent,bankParent);
 		paintContainer.add(new Paint());
 
 	}

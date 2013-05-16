@@ -1,4 +1,4 @@
-package source.staff;
+package source.event;
 import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
@@ -8,8 +8,8 @@ import frameWork.event.Event;
 import frameWork.event.ParentEvent;
 import source.Attributes;
 
-public class FishingManager extends ParentEvent{
-	public FishingManager(Event[] employees) {
+public class FishingParent extends ParentEvent{
+	public FishingParent(Event[] employees) {
 		super(employees);
 	}
 

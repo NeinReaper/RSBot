@@ -1,11 +1,11 @@
-package managers;
+package source.event;
 import frameWork.event.Event;
 import frameWork.event.ParentEvent;
 import source.resources.ScriptAttributes;
 
-public class TileViewingManager extends ParentEvent{
+public class TileViewingParent extends ParentEvent{
 
-	public TileViewingManager(Event[] employees) {
+	public TileViewingParent(Event[] employees) {
 		super(employees);
 	}
 	@Override

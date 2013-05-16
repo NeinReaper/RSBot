@@ -1,4 +1,4 @@
-package employees;
+package source.event.events;
 import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.wrappers.Tile;
@@ -7,7 +7,7 @@ import org.powerbot.game.api.wrappers.interactive.Player;
 import frameWork.event.Event;
 import source.resources.ScriptAttributes;
 
-public class TileViewingEmployee extends Event{
+public class TileViewingEvent extends Event{
 	private Tile tileIterator;
 	
 	@Override

@@ -1,4 +1,4 @@
-package source.staff.employees;
+package source.event.events;
 
 import frameWork.event.Event;
 
@@ -8,7 +8,7 @@ import org.powerbot.game.api.methods.tab.Inventory;
 import source.Attributes;
 import walking.WalkingUtil;
 
-public class WalkingEmp extends Event {
+public class WalkingEvent extends Event {
 
 	@Override
 	public boolean condition() {

@@ -1,12 +1,13 @@
-package managers;
+package source.event;
 import frameWork.event.Event;
 import frameWork.event.ParentEvent;
 import source.resources.ScriptAttributes;
 
-public class PlayerViewingManager extends ParentEvent{
+public class PlayerViewingParent extends ParentEvent{
 
-	public PlayerViewingManager(Event[] employees) {
+	public PlayerViewingParent(Event[] employees) {
 		super(employees);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
