@@ -11,7 +11,7 @@ import org.powerbot.game.api.wrappers.Tile;
 import employees.PlayerViewingEmployee;
 import employees.TileViewingEmployee;
 import frameWork.AbstractScript;
-import frameWork.staff.Staff;
+import frameWork.event.Event;
 import source.resources.ScriptAttributes;
 import source.userInterface.GUI;
 import source.userInterface.ScriptPaint;
@@ -30,8 +30,8 @@ public class ProsHud extends AbstractScript{
 			}
 			
 		});
-		container.submit(new TileViewingManager(new Staff[]{new TileViewingEmployee()}), 
-													new PlayerViewingManager(new Staff[]{new PlayerViewingEmployee()}));
+		container.submit(new TileViewingManager(new Event[]{new TileViewingEmployee()}), 
+													new PlayerViewingManager(new Event[]{new PlayerViewingEmployee()}));
 		paintContainer.add(new ScriptPaint());
 		
 	}

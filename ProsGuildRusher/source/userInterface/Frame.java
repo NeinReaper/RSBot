@@ -11,7 +11,7 @@ import javax.swing.JButton;
 
 import deprecatedNodeSystem.NodeEmployment;
 
-import frameWork.StaffContainer;
+import frameWork.EventContainer;
 
 import antiban.AntiBanPanel;
 public class Frame {
@@ -23,7 +23,7 @@ public class Frame {
 	public AntiBanPanel antiBanPanel;
 	public JComboBox<String> fishSelectionBox = new JComboBox<String>();
 	public JCheckBox dropFishBox = new JCheckBox("Drop Unwanted Fish");
-	public Frame(StaffContainer c) {
+	public Frame(EventContainer c) {
 		frame = new JFrame();
 		contentPane = new JPanel();
 		antiBanPanel = new AntiBanPanel();

@@ -3,9 +3,9 @@ package source.staff.employees;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.wrappers.node.Item;
 import source.Attributes;
-import frameWork.staff.Staff;
+import frameWork.event.Event;
 
-public class DropFishEmp extends Staff {
+public class DropFishEmp extends Event {
 
 	@Override
 	public boolean condition() {

@@ -5,14 +5,14 @@ import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.methods.widget.Bank;
 
-import frameWork.staff.Manager;
-import frameWork.staff.Staff;
+import frameWork.event.Event;
+import frameWork.event.ParentEvent;
 
 import source.Attributes;
 
-public class WalkingAndBankingManager extends Manager {
+public class WalkingAndBankingManager extends ParentEvent {
 
-	public WalkingAndBankingManager(Staff[] employees) {
+	public WalkingAndBankingManager(Event[] employees) {
 		super(employees);
 		// TODO Auto-generated constructor stub
 	}

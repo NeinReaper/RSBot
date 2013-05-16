@@ -15,8 +15,8 @@ import source.staff.*;
 import source.staff.employees.*;
 import source.userInterface.*;
 import frameWork.AbstractScript;
-import frameWork.staff.Manager;
-import frameWork.staff.Staff;
+import frameWork.event.Event;
+import frameWork.event.ParentEvent;
 
 @Manifest(authors = { "Protog/Jordan" }, 
 description = "Fishes at the fishing guild", 
@@ -28,8 +28,8 @@ public class PGRusher extends AbstractScript {
 		Paint.xpGained = 0;
 		Paint.fishFished = 0;
 		Paint.profit = 0;
-		Manager fishManager = new FishingManager(new Staff[]{new SpotFishEmp(), new InteractWithFishEmp()}),
-				walkManager = new WalkingAndBankingManager(new Staff[]{new WalkingEmp(), new BankFishEmp()});
+		ParentEvent fishManager = new FishingManager(new Event[]{new SpotFishEmp(), new InteractWithFishEmp()}),
+				walkManager = new WalkingAndBankingManager(new Event[]{new WalkingEmp(), new BankFishEmp()});
 		try {
 			Paint.hideButton = loadImage("http://t2.gstatic.com/images?q=tbn:ANd9GcRHmkRpJu3sk-JUEAGkJ2Gp3R5OrZpwspFP_GA2S3cCKZjP_jS7");
 			Paint.unHideButton = loadImage("http://t1.gstatic.com/images?q=tbn:ANd9GcRHr0Wz9h1erBX1DvuL_Kkclwt6090A2nqUmmjmurcs6M6Y1MBQ");

@@ -3,12 +3,13 @@ import org.powerbot.game.api.methods.Game;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.wrappers.interactive.Player;
-import frameWork.staff.Manager;
-import frameWork.staff.Staff;
+
+import frameWork.event.Event;
+import frameWork.event.ParentEvent;
 import source.Attributes;
 
-public class FishingManager extends Manager{
-	public FishingManager(Staff[] employees) {
+public class FishingManager extends ParentEvent{
+	public FishingManager(Event[] employees) {
 		super(employees);
 	}
 

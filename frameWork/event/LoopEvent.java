@@ -1,6 +1,6 @@
-package frameWork.staff;
+package frameWork.event;
 
-public abstract class WorkingStaff extends Staff implements Runnable {
+public abstract class LoopEvent extends Event implements Runnable {
 	private Thread myThread;
 	private volatile boolean isRunning = false;
 
@@ -46,7 +46,7 @@ public abstract class WorkingStaff extends Staff implements Runnable {
 	}
 
 	/**
-	 * delays the WorkingStaff
+	 * delays the LoopEvent
 	 */
 	public void delay(long millis) {
 		try {

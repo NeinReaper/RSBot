@@ -1,9 +1,9 @@
 package antiban.staff;
-import frameWork.staff.Manager;
-import frameWork.staff.Staff;
+import frameWork.event.Event;
+import frameWork.event.ParentEvent;
 import antiban.AntiBan;
-public class AntiBanManager extends Manager{
-	public AntiBanManager(Staff[] employees) {
+public class AntiBanManager extends ParentEvent{
+	public AntiBanManager(Event[] employees) {
 		super(employees);
 	}
 

@@ -1,11 +1,11 @@
 package managers;
-import frameWork.staff.Manager;
-import frameWork.staff.Staff;
+import frameWork.event.Event;
+import frameWork.event.ParentEvent;
 import source.resources.ScriptAttributes;
 
-public class TileViewingManager extends Manager{
+public class TileViewingManager extends ParentEvent{
 
-	public TileViewingManager(Staff[] employees) {
+	public TileViewingManager(Event[] employees) {
 		super(employees);
 	}
 	@Override

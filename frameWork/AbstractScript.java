@@ -11,7 +11,7 @@ import frameWork.paint.PaintContainer;
 
 
 public abstract class AbstractScript extends ActiveScript implements PaintListener, MouseListener{
-	protected volatile StaffContainer container = new StaffContainer();
+	protected volatile EventContainer container = new EventContainer();
 	protected PaintContainer paintContainer = new PaintContainer();
 
 	@Override

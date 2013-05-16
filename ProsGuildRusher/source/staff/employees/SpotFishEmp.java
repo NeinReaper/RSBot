@@ -1,5 +1,6 @@
 package source.staff.employees;
-import frameWork.staff.Staff;
+import frameWork.event.Event;
+
 import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.util.Filter;
@@ -8,7 +9,7 @@ import org.powerbot.game.api.wrappers.interactive.NPC;
 import source.Attributes;
 import source.userInterface.Paint;
 
-public class SpotFishEmp extends Staff{
+public class SpotFishEmp extends Event{
 
 	@Override
 	public boolean condition() {

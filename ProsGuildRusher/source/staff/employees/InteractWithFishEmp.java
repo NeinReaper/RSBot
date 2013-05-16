@@ -1,12 +1,13 @@
 package source.staff.employees;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.widget.Camera;
-import frameWork.staff.Staff;
+
+import frameWork.event.Event;
 import source.Attributes;
 import source.userInterface.Frame;
 import source.userInterface.Paint;
 
-public class InteractWithFishEmp extends Staff{
+public class InteractWithFishEmp extends Event{
 
 	@Override
 	public boolean condition() {

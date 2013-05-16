@@ -4,11 +4,12 @@ import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.wrappers.Tile;
 import org.powerbot.game.api.wrappers.interactive.Player;
 
-import frameWork.staff.Staff;
+import frameWork.event.Event;
 import source.resources.ScriptAttributes;
 
-public class TileViewingEmployee extends Staff{
+public class TileViewingEmployee extends Event{
 	private Tile tileIterator;
+	
 	@Override
 	public void execute() {
 		super.execute();

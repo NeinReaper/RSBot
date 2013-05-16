@@ -1,14 +1,14 @@
 package frameWork;
 import org.powerbot.game.api.util.Random;
 
-import frameWork.staff.Staff;
+import frameWork.event.Event;
 
-public class Employer extends Thread implements Runnable{
-	private StaffContainer container;
+public class EventManager extends Thread implements Runnable{
+	private EventContainer container;
 	private boolean isRunning = false;
 	private Thread myThread;
-	public Employer(){
-		container = new StaffContainer();
+	public EventManager(){
+		container = new EventContainer();
 		//myLock = new ThreadLock;
 	}
 	@Override
@@ -42,13 +42,13 @@ public class Employer extends Thread implements Runnable{
 		return isRunning;
 	}
 		
-	public StaffContainer getContainer(){
+	public EventContainer getContainer(){
 		return container;
 	}
 	
 	public void delay(int millis){
 		try {
-			Employer.sleep(millis);
+			EventManager.sleep(millis);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

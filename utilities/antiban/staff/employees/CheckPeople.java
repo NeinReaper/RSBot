@@ -7,10 +7,11 @@ import org.powerbot.game.api.util.Filter;
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.wrappers.Area;
 import org.powerbot.game.api.wrappers.interactive.Player;
-import frameWork.staff.WaitingStaff;
+
+import frameWork.event.DelayedEvent;
 import antiban.AntiBan;
 
-public class CheckPeople extends WaitingStaff {
+public class CheckPeople extends DelayedEvent {
 	
 	private Area viewArea;
 	

@@ -1,16 +1,16 @@
-package frameWork.staff;
+package frameWork.event;
 
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.util.Timer;
 
-public class WaitingStaff extends Staff{
+public class DelayedEvent extends Event{
 	private Timer waitTimer;
 	private int waitingTime;
-	public WaitingStaff(){
+	public DelayedEvent(){
 		waitingTime = Random.nextInt(1800000, 5400000);//default: 30 - 90 mins
 	}
 	
-	public WaitingStaff(int waitingTime) {
+	public DelayedEvent(int waitingTime) {
 		this.waitingTime = waitingTime;
 	}
 	

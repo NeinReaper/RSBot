@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import deprecatedNodeSystem.NodeEmployment;
-import frameWork.StaffContainer;
+import frameWork.EventContainer;
 
 
 import antiban.AntiBan;
@@ -13,8 +13,8 @@ import source.Attributes;
 
 public class BeginButtonListener implements ActionListener {
 	private Frame frame;
-	private StaffContainer container;
-	public BeginButtonListener(Frame frame, StaffContainer c) {
+	private EventContainer container;
+	public BeginButtonListener(Frame frame, EventContainer c) {
 		this.frame = frame;
 		container = c;
 	}

@@ -1,8 +1,8 @@
-package frameWork.staff;
+package frameWork.event;
 
 import org.powerbot.game.api.util.Timer;
 
-public abstract class Staff{
+public abstract class Event{
 	protected long timeIdle, startTime, lastProcess;
 	private long garbageTime = 21600000;//21600000 = 6 hours(default)
 	private boolean forceCollect = false, forceRemain = false;
@@ -12,7 +12,7 @@ public abstract class Staff{
 	 * Event which can be executed if a condition is met
 	 * contains its own system of garbage collection, modified by the user
 	 */
-	public Staff(){
+	public Event(){
 		timeIdle = 0;
 		startTime = System.currentTimeMillis();
 		garbageCollection = new Timer(garbageTime);

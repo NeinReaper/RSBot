@@ -4,11 +4,12 @@ import org.powerbot.game.api.methods.Tabs;
 import org.powerbot.game.api.methods.Widgets;
 import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.wrappers.widget.WidgetChild;
-import frameWork.staff.WaitingStaff;
+
+import frameWork.event.DelayedEvent;
 
 import antiban.AntiBan;
 
-public class CheckStats extends WaitingStaff {
+public class CheckStats extends DelayedEvent {
 	
 	private WidgetChild fishChild = Widgets.get(320,34);
 

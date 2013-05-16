@@ -1,13 +1,14 @@
 package source.staff.employees;
 
-import frameWork.staff.Staff;
+import frameWork.event.Event;
+
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
 
 import source.Attributes;
 import walking.WalkingUtil;
 
-public class WalkingEmp extends Staff {
+public class WalkingEmp extends Event {
 
 	@Override
 	public boolean condition() {

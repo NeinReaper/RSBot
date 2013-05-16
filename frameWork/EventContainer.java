@@ -2,21 +2,21 @@ package frameWork;
 
 import java.util.ArrayList;
 
-import frameWork.staff.Janitor;
-import frameWork.staff.Staff;
-import frameWork.staff.WorkingStaff;
+import frameWork.event.Event;
+import frameWork.event.Janitor;
+import frameWork.event.LoopEvent;
 
 
-public class StaffContainer extends ArrayList<Staff>{
+public class EventContainer extends ArrayList<Event>{
 	private Janitor janitor;
 	private static final int DEFAULT_CLEANUP_TIME = 360000;//1 hour
 	private boolean shutDown = false;
 	
 	/**
-	 * Contains an arraylist of type Staff
+	 * Contains an arraylist of type Event
 	 * submits the default staff object to itself (garbage collection system)
 	 */
-	public StaffContainer(){
+	public EventContainer(){
 		super();
 		janitor = new Janitor(this, DEFAULT_CLEANUP_TIME);
 		janitor.setForceRemain(true);
@@ -26,16 +26,18 @@ public class StaffContainer extends ArrayList<Staff>{
 	/**
 	 * loops through all the staff objects and executes them
 	 */
-	public void employ(){
+	public synchronized void employ(){
 		if(!shutDown){
-			for(Staff s : toArray(new Staff[size()])){
-				if(s != null){
-					if(!shutDown &&s.condition()) {
-						s.execute();
-						if(s instanceof WorkingStaff){
-							((WorkingStaff)s).join();
-						}
-					}	
+			for(Event s : toArray(new Event[size()])){
+				synchronized(s){
+					if(s != null){
+						if(!shutDown &&s.condition()) {
+							s.execute();
+							if(s instanceof LoopEvent){
+								((LoopEvent)s).join();
+							}
+						}	
+					}
 				}
 			}
 		}
@@ -45,8 +47,8 @@ public class StaffContainer extends ArrayList<Staff>{
 	 * submits the trainees to be executed
 	 * @param trainees to be scheduled for execution
 	 */
-	public void submit(Staff... trainees){
-		for(Staff t : trainees){
+	public void submit(Event... trainees){
+		for(Event t : trainees){
 			if(t != null) {
 				add(t);
 			}
@@ -58,8 +60,8 @@ public class StaffContainer extends ArrayList<Staff>{
 	 * just incase it still may need to be executed once more
 	 *  
 	 */
-	public void revoke(Staff... staff){
-		for(Staff s : staff){
+	public void revoke(Event... staff){
+		for(Event s : staff){
 			if(s != null){
 				s.setForceCollect(true);
 			}
@@ -67,13 +69,13 @@ public class StaffContainer extends ArrayList<Staff>{
 	}
 	
 	public void revoke(int id){
-		Staff s = get(id);
+		Event s = get(id);
 		revoke(s);
 	}
 	
 	public void collectGarbage() {
 		shutDown = true;
-		for(Staff s : this){
+		for(Event s : this){
 			if(s != null){
 				revoke(s);
 			}

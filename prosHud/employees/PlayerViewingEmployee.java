@@ -3,11 +3,11 @@ import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.wrappers.interactive.Player;
 
-import frameWork.staff.Staff;
+import frameWork.event.Event;
 
 import source.resources.ScriptAttributes;
 
-public class PlayerViewingEmployee extends Staff{
+public class PlayerViewingEmployee extends Event{
 
 	@Override
 	public void execute() {

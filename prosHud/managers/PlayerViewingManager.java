@@ -1,11 +1,11 @@
 package managers;
-import frameWork.staff.Manager;
-import frameWork.staff.Staff;
+import frameWork.event.Event;
+import frameWork.event.ParentEvent;
 import source.resources.ScriptAttributes;
 
-public class PlayerViewingManager extends Manager{
+public class PlayerViewingManager extends ParentEvent{
 
-	public PlayerViewingManager(Staff[] employees) {
+	public PlayerViewingManager(Event[] employees) {
 		super(employees);
 	}
 
