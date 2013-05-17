@@ -18,9 +18,9 @@ import frameWork.AbstractScript;
 import frameWork.event.Event;
 import frameWork.event.ParentEvent;
 
-@Manifest(authors = { "Protog/Jordan" }, 
+@Manifest(authors = { "Protog" }, 
 description = "Fishes at the fishing guild", 
-name = "ProsGuildRusher", 
+name = "ProsFishRusher", 
 version = 1.0)
 public class PGRusher extends AbstractScript {
 	@Override
@@ -31,13 +31,7 @@ public class PGRusher extends AbstractScript {
 		ParentEvent fishParent = new FishingParent(new Event[]{new SpotFishEvent(), new FishEvent()}),
 				walkParent = new WalkingParent(new Event[]{new WalkingEvent(), new BankEvent()}),
 				bankParent = new BankingParent(new Event[]{new BankEvent()});
-		try {
-			Paint.hideButton = loadImage("http://t2.gstatic.com/images?q=tbn:ANd9GcRHmkRpJu3sk-JUEAGkJ2Gp3R5OrZpwspFP_GA2S3cCKZjP_jS7");
-			Paint.unHideButton = loadImage("http://t1.gstatic.com/images?q=tbn:ANd9GcRHr0Wz9h1erBX1DvuL_Kkclwt6090A2nqUmmjmurcs6M6Y1MBQ");
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-			Paint.status = "Error with loading button";
-		}
+
 
 		if(Game.isLoggedIn()) {
 			Paint.startXp = Skills.getExperience(Skills.FISHING);

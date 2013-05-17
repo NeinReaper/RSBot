@@ -1,11 +1,17 @@
 package source.userInterface;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.io.IOException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
+
 import org.powerbot.game.api.methods.tab.Skills;
 import org.powerbot.game.api.util.Time;
 
@@ -16,48 +22,86 @@ public class Paint extends AbstractPaint{
 	public static int xpGained, fishFished,profit,startXp,fishXp = 0, fishPrice = 0;
 	public static long startTime;
 	public static String status = "";
-	public static Image hideButton, unHideButton;
+	public final Image hideButton = getImage("http://t2.gstatic.com/images?q=tbn:ANd9GcRHmkRpJu3sk-JUEAGkJ2Gp3R5OrZpwspFP_GA2S3cCKZjP_jS7"), 
+								unHideButton = getImage("http://t1.gstatic.com/images?q=tbn:ANd9GcRHr0Wz9h1erBX1DvuL_Kkclwt6090A2nqUmmjmurcs6M6Y1MBQ"), 
+								fishCape = getImage("http://i591.photobucket.com/albums/ss356/pugnoses/cape_zps60f0f2c6.jpg");
+	
+	private Image getImage(String url) {
+		try {
+			return ImageIO.read(new URL(url));
+		} catch(IOException e) {
+			return null;
+		}
+	}
 
-	public void drawPaint(Graphics arg0) {
-		Graphics2D g = (Graphics2D) arg0;
+	private final Color color1 = new Color(51, 255, 255);
+	private final Color color2 = new Color(0, 0, 0);
+	private final Color color3 = new Color(255, 255, 255);
+	private final Color color4 = new Color(51, 255, 51);
+
+	private final BasicStroke stroke1 = new BasicStroke(1);
+
+	private final Font font1 = new Font("Arial", 0, 15);
+	private final Font font2 = new Font("Arial", 0, 12);
+
+	
+	
+	public void drawPaint(Graphics g1){
+		Graphics2D g = (Graphics2D) g1;
 		g.setRenderingHints( new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF));
-		if(!Attributes.showGui) {
+		if(!Attributes.showGui){
 			xpGained = Skills.getExperience(Skills.FISHING)-startXp;
 			fishFished = (int) (xpGained/fishXp);
 			profit = fishFished*fishPrice;
-			if(Attributes.showPaint) {
-				g.setColor(new Color(255, 255, 255));
-				g.fillRect(7, 346, 380, 113);
-				g.setColor(new Color(0, 204, 204));
-				g.fillRect(11, 352, 371, 102);
-				g.setColor(new Color(0, 0, 204));
-				g.setFont(new Font("Arial", 0, 18));
-				g.drawString("ProsGuildRusher", 15, 366);
-				g.setColor(new Color(255, 255, 255));
-				g.setFont(new Font("Arial", 0, 12));
+			if(Attributes.showPaint){
 				long currentTimeMilli = System.currentTimeMillis()-Paint.startTime;
 				long milliToSecs = TimeUnit.MILLISECONDS.toMinutes(currentTimeMilli);
-				if(fishFished < 1) {
-					g.drawString("Profit: wait for a few fish", 15, 379);
-					g.drawString("Profit/hr: Processing", 15, 392);
-					g.drawString("Fish/hr:  Processing", 15, 419);
-					g.drawString("XP Gained: Processing", 15, 432);
-					g.drawString("XP/HR: Processing", 15, 446);
-					g.drawString("Time to Level("+(Skills.getLevel(Skills.FISHING)+1)+"): "+ "Processing", 215, 388);
-				} else {
-					g.drawString("Profit: "+profit, 15, 379);
-					g.drawString("Profit/hr: "+(int)Math.round(profit/((double)milliToSecs/60)), 15, 392);
-					g.drawString("Fish/hr:  "+(int)Math.round(fishFished/((double)milliToSecs/60)), 15, 419);
-					g.drawString("XP Gained: "+xpGained, 15, 432);
-					g.drawString("XP/HR: "+(int)Math.round(xpGained/((double)milliToSecs/60)), 15, 446);
-					g.drawString("Time to Level("+(Skills.getLevel(Skills.FISHING)+1)+"): "+Time.format((long) (((double) Skills.getExperienceToLevel(Skills.FISHING, Skills.getRealLevel(Skills.FISHING)+1) * 3600000.0) / (double)(3600000d / (double) (System.currentTimeMillis()-startTime) * (double) (Skills.getExperience(Skills.FISHING) - startXp)))), 215, 388);
+				g.setColor(color1);
+				g.fillRoundRect(3, 353, 317, 93, 16, 16);//243
+				g.setColor(color2);
+				g.setStroke(stroke1);
+				g.drawRoundRect(3, 353, 317, 93, 16, 16);
+				g.drawImage(fishCape, 282, 368, null);
+				g.setFont(font1);
+				g.setColor(color3);
+				g.drawString("ProsGuildRusher: ", 12, 371);
+				g.setColor(color4);
 
+				if(fishFished < 1) {
+					g.drawString("Profit: waiting", 10, 383);
+					g.drawString("Profit/Hr: waiting", 10, 397);
+					g.drawString("Fish/Hr: waiting", 10, 430);
+					g.drawString("Fish: waiting", 10, 412);
+					g.drawString("XP: waiting", 130, 382);
+					g.drawString("XP/Hr: waiting", 130, 395);
+					g.drawString("TimeToLevel: waiting", 130, 423);
+
+				} else {
+					g.drawString("Profit: " + profit, 10, 383);
+					g.drawString("Profit/Hr: " + (int)Math.round(profit/((double)milliToSecs/60)), 10, 397);
+					g.drawString("Fish/Hr: " + (int)Math.round(fishFished/((double)milliToSecs/60)), 10, 430);
+					g.drawString("XP: " + xpGained, 130, 272);
+					g.drawString("XP/Hr: " + (int)Math.round(xpGained/((double)milliToSecs/60)), 130, 395);
+					g.drawString("TimeToLevel(" + (Skills.getLevel(Skills.FISHING)+1) + "): " 
+							+ Time.format((long) (((double) Skills.getExperienceToLevel(Skills.FISHING, 
+									Skills.getRealLevel(Skills.FISHING)+1) * 3600000.0) 
+									/ (double)(3600000d / (double) (System.currentTimeMillis()-startTime)
+											* (double) (Skills.getExperience(Skills.FISHING) - startXp)))), 130, 423);
 				}
-				g.drawString("Fish: "+fishFished, 15, 405);
-				g.drawString("Time Running: "+Time.format(currentTimeMilli), 215, 376);
-				g.drawString("Status: "+status, 215, 413);
-				g.drawString("XP to level("+(Skills.getLevel(Skills.FISHING)+1)+"): "+(Skills.getExperienceToLevel(Skills.FISHING, Skills.getRealLevel(Skills.FISHING)+1)), 215, 425);
-				g.drawString("Percent Until Level("+(Skills.getLevel(Skills.FISHING)+1)+"): "+(int)((double)Skills.getExperienceToLevel(Skills.FISHING , Skills.getRealLevel(Skills.FISHING)+1) / Skills.getExperience(Skills.FISHING) * 1000), 215, 439);
+				g.drawString("Time: " + Time.format(currentTimeMilli), 175, 370);
+				g.drawString("XPtoLvl(" + (Skills.getLevel(Skills.FISHING)+1) + "): " 
+								+ (Skills.getExperienceToLevel(Skills.FISHING, 
+										Skills.getRealLevel(Skills.FISHING)+1)), 130, 408);
+				g.drawString("PercentToLevel(" + (Skills.getLevel(Skills.FISHING)+1) + "): " 
+										+ (int)((double)Skills.getExperienceToLevel(Skills.FISHING ,
+												Skills.getRealLevel(Skills.FISHING)+1)
+												/ Skills.getExperience(Skills.FISHING) * 1000), 130, 438);
+				g.drawString("Fish: " + fishFished, 10, 412);
+				
+				g.setFont(font2);
+				g.setColor(color3);
+				g.drawString(status, 135, 365);
+
 			}
 			if(hideButton != null && unHideButton != null) {
 				g.drawImage(Attributes.showPaint ?  hideButton : unHideButton, 7, 459, null);

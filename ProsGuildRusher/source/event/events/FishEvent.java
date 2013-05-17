@@ -17,20 +17,19 @@ public class FishEvent extends Event{
 	@Override
 	public void execute() {
 		super.execute();
-		if(Attributes.fishSpot != null) {
-			if(Attributes.fishSpot.isOnScreen()) {
-				if(Attributes.fishSpot.interact(Frame.clickAction)) {
-					Paint.status = "Fishing";
-				} else {
-					Camera.turnTo(Attributes.fishSpot);
-				}
-					
-			} 
-			
+		try{
+			if(Attributes.fishSpot.interact(Frame.clickAction)) {
+				Paint.status = "Fishing";
+			} else {
+				Camera.turnTo(Attributes.fishSpot);
+			}
+		} catch(NullPointerException e){
+			e.printStackTrace();
 		}
 		
+
 	}
 
-	
+
 
 }
