@@ -12,8 +12,11 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
+import org.powerbot.game.api.methods.Game;
+import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.tab.Skills;
 import org.powerbot.game.api.util.Time;
+import org.powerbot.game.client.input.Canvas;
 
 import frameWork.paint.AbstractPaint;
 import source.Attributes;
@@ -36,8 +39,8 @@ public class Paint extends AbstractPaint{
 
 	private final Color color1 = new Color(51, 255, 255);
 	private final Color color2 = new Color(0, 0, 0);
-	private final Color color3 = new Color(255, 255, 255);
-	private final Color color4 = new Color(51, 255, 51);
+	private final Color color3 = Color.RED;
+	private final Color color4 = Color.WHITE;
 
 	private final BasicStroke stroke1 = new BasicStroke(1);
 
@@ -49,6 +52,7 @@ public class Paint extends AbstractPaint{
 	public void drawPaint(Graphics g1){
 		Graphics2D g = (Graphics2D) g1;
 		g.setRenderingHints( new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF));
+		drawMouse(g1);
 		if(!Attributes.showGui){
 			xpGained = Skills.getExperience(Skills.FISHING)-startXp;
 			fishFished = (int) (xpGained/fishXp);
@@ -80,7 +84,7 @@ public class Paint extends AbstractPaint{
 					g.drawString("Profit: " + profit, 10, 383);
 					g.drawString("Profit/Hr: " + (int)Math.round(profit/((double)milliToSecs/60)), 10, 397);
 					g.drawString("Fish/Hr: " + (int)Math.round(fishFished/((double)milliToSecs/60)), 10, 430);
-					g.drawString("XP: " + xpGained, 130, 272);
+					g.drawString("XP: " + xpGained, 130, 382);
 					g.drawString("XP/Hr: " + (int)Math.round(xpGained/((double)milliToSecs/60)), 130, 395);
 					g.drawString("TimeToLevel(" + (Skills.getLevel(Skills.FISHING)+1) + "): " 
 							+ Time.format((long) (((double) Skills.getExperienceToLevel(Skills.FISHING, 
@@ -88,7 +92,7 @@ public class Paint extends AbstractPaint{
 									/ (double)(3600000d / (double) (System.currentTimeMillis()-startTime)
 											* (double) (Skills.getExperience(Skills.FISHING) - startXp)))), 130, 423);
 				}
-				g.drawString("Time: " + Time.format(currentTimeMilli), 175, 370);
+				g.drawString("Time: " + Time.format(currentTimeMilli), 130, 370);
 				g.drawString("XPtoLvl(" + (Skills.getLevel(Skills.FISHING)+1) + "): " 
 								+ (Skills.getExperienceToLevel(Skills.FISHING, 
 										Skills.getRealLevel(Skills.FISHING)+1)), 130, 408);
@@ -100,7 +104,7 @@ public class Paint extends AbstractPaint{
 				
 				g.setFont(font2);
 				g.setColor(color3);
-				g.drawString(status, 135, 365);
+				g.drawString(status, 230, 365);
 
 			}
 			if(hideButton != null && unHideButton != null) {
@@ -108,5 +112,24 @@ public class Paint extends AbstractPaint{
 
 			}
 		}
+	}
+	public void drawMouse(Graphics g){
+		//horizontal line
+		int hx1 = 0, hx2 = Mouse.getX()-10, hy1 = Mouse.getY(), hy2 = hy1;
+		g.drawLine(hx1,hy1,hx2,hy2);
+		
+		hx1 = Mouse.getX()+10;
+		hx2 = (int)Game.getDimensions().getWidth();
+		g.drawLine(hx1,hy1,hx2,hy2);
+		
+		//vertical line
+		int vx1 = Mouse.getX(), vx2 = vx1, vy1 = 0, vy2 = Mouse.getY()-10;
+		g.drawLine(vx1,vy1,vx2,vy2);
+		
+		vy1 = Mouse.getY()+10;
+		vy2 = (int)(Game.getDimensions().getHeight());
+		g.drawLine(vx1, vy1, vx2, vy2);
+		
+		g.drawRect(Mouse.getX()-10, Mouse.getY()-10, 20, 20);
 	}
 }

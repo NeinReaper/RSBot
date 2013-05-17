@@ -1,14 +1,8 @@
 package source.userInterface;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import deprecatedNodeSystem.NodeEmployment;
 import frameWork.EventContainer;
-
-
 import antiban.AntiBan;
-
 import source.Attributes;
 
 public class BeginButtonListener implements ActionListener {

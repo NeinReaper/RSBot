@@ -20,7 +20,7 @@ import frameWork.event.ParentEvent;
 
 @Manifest(authors = { "Protog" }, 
 description = "Fishes at the fishing guild", 
-name = "ProsFishRusher", 
+name = "ProsFishRusherLocal", 
 version = 1.0)
 public class PGRusher extends AbstractScript {
 	@Override

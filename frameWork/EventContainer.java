@@ -1,11 +1,6 @@
 package frameWork;
-
 import java.util.ArrayList;
-
-import frameWork.event.Event;
-import frameWork.event.Janitor;
-import frameWork.event.LoopEvent;
-
+import frameWork.event.*;
 
 public class EventContainer extends ArrayList<Event>{
 	private Janitor janitor;
