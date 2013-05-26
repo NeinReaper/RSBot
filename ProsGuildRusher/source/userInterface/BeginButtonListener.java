@@ -21,38 +21,38 @@ public class BeginButtonListener implements ActionListener {
 			case "Shark":
 				Attributes.fishNpcId = 313;
 				Frame.clickAction = "Harpoon";
-				Paint.fishXp = 110;
+				Painter.fishXp = 110;
 				Attributes.fishIds.add(383);
 				break;
 			case "Lobster":
 				Attributes.fishNpcId = 312;
 				Frame.clickAction = "Cage";
-				Paint.fishXp = 90;
+				Painter.fishXp = 90;
 				Attributes.fishIds.add(377);
 				break;
 			case "SwordFish":
 				Attributes.fishNpcId = 312;
 				Frame.clickAction = "Harpoon";
-				Paint.fishXp = 100;
+				Painter.fishXp = 100;
 				Attributes.fishIds.add(371);
 				break;
 			case "Bass":
 				Attributes.fishNpcId = 313;
 				Frame.clickAction = "Net";
-				Paint.fishXp = 100;
+				Painter.fishXp = 100;
 				Attributes.fishIds.add(363);
 				break;
 			case "Tuna":
 				Attributes.fishNpcId = 312;
 				Frame.clickAction = "Harpoon";
-				Paint.fishXp = 80;
+				Painter.fishXp = 80;
 				Attributes.fishIds.add(359);
 				break;
 			}
 		} else {
 			Attributes.fishNpcId = 313;
 			Frame.clickAction = "Harpoon";
-			Paint.fishXp = 110;
+			Painter.fishXp = 110;
 			Attributes.fishIds.add(383);
 		}
 		Attributes.antiBan = new AntiBan(frame.antiBanPanel.useAntiBanBox.isSelected(), 
@@ -63,7 +63,7 @@ public class BeginButtonListener implements ActionListener {
 		Attributes.showPaint = true;
 		Attributes.showGui = false;
 		//ScriptAttributes.fishPrice = GeItem.lookup(ScriptAttributes.fishId).getPrice();
-		Paint.fishPrice = 815;
+		Painter.fishPrice = 815;
 		frame.frame.setVisible(Attributes.showGui);
 		frame.frame.dispose();
 

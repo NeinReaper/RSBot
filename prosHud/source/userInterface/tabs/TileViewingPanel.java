@@ -1,4 +1,4 @@
-package source.userInterface;
+package source.userInterface.tabs;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -23,7 +23,6 @@ public class TileViewingPanel {
 		
 		panel.setLayout(null);
 		
-		panel.setBounds(5, 20, 180, 110);
 		tileViewingPanelLabel.setBounds(5, 0, 90, 15);
 		viewMouseTileBox.setBounds(5, 20, 170, 20);
 		distMouseTileBox.setBounds(5, 40, 170, 20);

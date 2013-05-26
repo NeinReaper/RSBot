@@ -1,18 +1,16 @@
 package source.event.events;
 import org.powerbot.game.api.methods.input.Mouse;
 import org.powerbot.game.api.methods.interactive.Players;
+import org.powerbot.game.api.util.Random;
 import org.powerbot.game.api.wrappers.Tile;
 import org.powerbot.game.api.wrappers.interactive.Player;
-
-import frameWork.event.Event;
+import frameWork.event.LoopEvent;
 import source.resources.ScriptAttributes;
-
-public class TileViewingEvent extends Event{
+public class TileViewingEvent extends LoopEvent{
 	private Tile tileIterator;
 	
 	@Override
-	public void execute() {
-		super.execute();
+	public int loop() {
 		Player p = Players.getLocal();
 		if(p!= null){
 			//Walking.getc
@@ -25,6 +23,7 @@ public class TileViewingEvent extends Event{
 				}
 			}
 		}
+		return Random.nextInt(100,200);
 	}
 
 	@Override

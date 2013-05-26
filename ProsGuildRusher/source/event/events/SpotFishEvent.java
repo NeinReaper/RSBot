@@ -1,14 +1,11 @@
 package source.event.events;
 import frameWork.event.Event;
-
 import org.powerbot.game.api.methods.interactive.NPCs;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.util.Filter;
 import org.powerbot.game.api.wrappers.interactive.NPC;
-
 import source.Attributes;
-import source.userInterface.Paint;
-
+import source.userInterface.Painter;
 public class SpotFishEvent extends Event{
 
 	@Override
@@ -19,16 +16,14 @@ public class SpotFishEvent extends Event{
 	@Override
 	public void execute() {
 		super.execute();
-		Paint.status = "Looking for Fish";
+		Painter.status = "Looking for Fish";
 		Attributes.fishSpot = NPCs.getNearest(new Filter<NPC>() {
+			
 			@Override
 			public boolean accept(NPC n) {
-				return (n.getId() == Attributes.fishNpcId && Attributes.DOCK_AREA.contains(n.getLocation()));
+				return (n.getId() == Attributes.fishNpcId);
 			}
-		});
-		
+			
+		});	
 	}
-
-	
-
 }

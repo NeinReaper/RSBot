@@ -1,15 +1,11 @@
 package frameWork;
 import org.powerbot.game.api.util.Random;
-
-import frameWork.event.Event;
-
 public class EventManager extends Thread implements Runnable{
 	private EventContainer container;
 	private boolean isRunning = false;
 	private Thread myThread;
 	public EventManager(){
 		container = new EventContainer();
-		//myLock = new ThreadLock;
 	}
 	@Override
 	public void run(){

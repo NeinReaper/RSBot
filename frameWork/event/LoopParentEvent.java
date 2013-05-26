@@ -1,5 +1,7 @@
 package frameWork.event;
 
+import org.powerbot.game.api.util.Random;
+
 import frameWork.EventContainer;
 
 public abstract class LoopParentEvent extends LoopEvent{
@@ -13,8 +15,9 @@ public abstract class LoopParentEvent extends LoopEvent{
 		submit(staffs);
 	}
 	@Override
-	public void loop() {
+	public int loop() {
 		container.employ();
+		return Random.nextInt(550, 650);
 	}
 
 	public void submit(Event...staffs){

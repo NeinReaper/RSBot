@@ -13,7 +13,7 @@ public abstract class AbstractScript extends ActiveScript implements PaintListen
 	protected volatile EventContainer container = new EventContainer();
 	protected PaintContainer paintContainer = new PaintContainer();
 	private Client client;
-	
+
 	@Override
 	public void onStart(){
 		begin();
@@ -27,32 +27,32 @@ public abstract class AbstractScript extends ActiveScript implements PaintListen
 
 	@Override
 	public int loop() {
-		if (client != Bot.client()) {
-		    WidgetCache.purge();
-		    Bot.context().getEventManager().addListener(this);
-		    client = Bot.client();
-		}
-		container.employ();
+			if (client != Bot.client()) {
+				WidgetCache.purge();
+				Bot.context().getEventManager().addListener(this);
+				client = Bot.client();
+			}
+			container.employ();
 		return Random.nextInt(50, 150);
 	}
 
-	@Override
-	public void onRepaint(Graphics arg0) {
-		paintContainer.employ(arg0);
+		@Override
+		public void onRepaint(Graphics arg0) {
+			paintContainer.employ(arg0);
+		}
+
+		public abstract void begin();
+		public abstract void end();
+
+		@Override
+		public void mouseEntered(MouseEvent e) { }
+
+		@Override
+		public void mouseExited(MouseEvent e) {	}
+
+		@Override
+		public void mousePressed(MouseEvent e) { }
+
+		@Override
+		public void mouseReleased(MouseEvent e) { }
 	}
-
-	public abstract void begin();
-	public abstract void end();
-
-	@Override
-	public void mouseEntered(MouseEvent e) { }
-
-	@Override
-	public void mouseExited(MouseEvent e) {	}
-
-	@Override
-	public void mousePressed(MouseEvent e) { }
-
-	@Override
-	public void mouseReleased(MouseEvent e) { }
-}

@@ -16,6 +16,6 @@ public class FishingParent extends ParentEvent{
 	@Override
 	public boolean condition() {
 		Player p;
-		return ((Game.isLoggedIn() && !Attributes.showGui) && ((p = Players.getLocal())!= null) &&(p.getInteracting() == null) && (Attributes.DOCK_AREA.contains(p) && !Inventory.isFull()));
+		return ((Game.isLoggedIn() && !Attributes.showGui) && ((p = Players.getLocal())!= null) &&(p.getInteracting() == null) && (!Inventory.isFull()));
 	}
 }

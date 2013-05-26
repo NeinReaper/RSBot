@@ -5,14 +5,13 @@ import frameWork.event.*;
 public class EventContainer extends ArrayList<Event>{
 	private Janitor janitor;
 	private static final int DEFAULT_CLEANUP_TIME = 360000;//1 hour
-	private boolean shutDown = false;
+	public static boolean shutDown = false;
 	
 	/**
 	 * Contains an arraylist of type Event
 	 * submits the default staff object to itself (garbage collection system)
 	 */
 	public EventContainer(){
-		super();
 		janitor = new Janitor(this, DEFAULT_CLEANUP_TIME);
 		janitor.setForceRemain(true);
 		submit(janitor);
@@ -28,8 +27,8 @@ public class EventContainer extends ArrayList<Event>{
 					if(s != null){
 						if(!shutDown &&s.condition()) {
 							s.execute();
-							if(s instanceof LoopEvent){
-								((LoopEvent)s).join();
+							if(s instanceof SynchronizedEvent){
+								((SynchronizedEvent)s).join();
 							}
 						}	
 					}

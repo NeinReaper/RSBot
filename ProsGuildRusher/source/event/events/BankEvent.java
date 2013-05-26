@@ -5,7 +5,7 @@ import org.powerbot.game.api.methods.widget.Bank;
 
 import frameWork.event.Event;
 import source.Attributes;
-import source.userInterface.Paint;
+import source.userInterface.Painter;
 
 public class BankEvent extends Event{
 	@Override
@@ -17,11 +17,11 @@ public class BankEvent extends Event{
 	public void execute() {
 		super.execute();
 		if(Bank.open()) {
-			Paint.status = "opening bank";
+			Painter.status = "opening bank";
 			if(Bank.depositInventory()) {
-				Paint.status = "Depositing Fish";
+				Painter.status = "Depositing Fish";
 				if(Bank.close()) {
-					Paint.status = "Closing Bank";
+					Painter.status = "Closing Bank";
 				}
 			}
 				

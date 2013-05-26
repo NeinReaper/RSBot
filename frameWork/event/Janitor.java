@@ -1,5 +1,7 @@
 package frameWork.event;
 
+import org.powerbot.game.api.util.Random;
+
 import frameWork.EventContainer;
 
 public class Janitor extends LoopEvent{
@@ -22,14 +24,19 @@ public class Janitor extends LoopEvent{
 	 */
 	@Override
 	public boolean condition() {
-		return timeIdle > cleanUpTime;
+		if(timeIdle > cleanUpTime) {
+			return timeIdle > cleanUpTime;
+		} 
+		timeIdle = System.currentTimeMillis()-startTime;
+		return false;
+		
 	}
 
 	/**
 	 * Removes Event if its been idle for too long(default time is 6 hours)
 	 */
 	@Override
-	public void loop() {
+	public int loop() {
 		count++;
 		System.out.println("Garbage Collection ran: "+ count);
 		for(Event s : container.toArray(new Event[container.size()])){
@@ -41,7 +48,7 @@ public class Janitor extends LoopEvent{
 				}
 			}
 		}
-		
+		return Random.nextInt(50, 100);
 	}
 
 	/**

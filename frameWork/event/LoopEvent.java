@@ -1,10 +1,10 @@
 package frameWork.event;
 
 public abstract class LoopEvent extends Event implements Runnable {
-	private Thread myThread;
+	protected Thread myThread;
 	private volatile boolean isRunning = false;
 
-	public abstract void loop();
+	public abstract int loop();
 
 	/**
 	 * Executes if its thread has not been started
@@ -24,18 +24,16 @@ public abstract class LoopEvent extends Event implements Runnable {
 	public void run() {
 		isRunning = condition();
 		while (isRunning) {
-			loop();
+			try {
+				Thread.sleep(loop());
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
-	public void join() {
-		try {
-			myThread.join();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
 
 	public boolean isRunning() {
 		return isRunning;
@@ -44,16 +42,4 @@ public abstract class LoopEvent extends Event implements Runnable {
 	public void shutDown() {
 		isRunning = false;
 	}
-
-	/**
-	 * delays the LoopEvent
-	 */
-	public void delay(long millis) {
-		try {
-			myThread.sleep(millis);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
 }

@@ -20,6 +20,9 @@ public class Frame {
 	public AntiBanPanel antiBanPanel;
 	public JComboBox<String> fishSelectionBox = new JComboBox<String>();
 	public JCheckBox dropFishBox = new JCheckBox("Drop Unwanted Fish");
+	public static void main(String[] args){
+		new Frame(new EventContainer()).frame.setVisible(true);
+	}
 	public Frame(EventContainer c) {
 		frame = new JFrame();
 		contentPane = new JPanel();
