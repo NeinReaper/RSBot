@@ -1,7 +1,5 @@
 package source.event.events;
 import frameWork.event.Event;
-
-import org.powerbot.game.api.methods.Calculations;
 import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.methods.tab.Inventory;
 import org.powerbot.game.api.wrappers.Tile;
@@ -13,7 +11,7 @@ public class WalkingEvent extends Event {
 	public static Tile[] path;
 	@Override
 	public boolean condition() {
-		return (Inventory.isFull() && !Attributes.BANK_AREA.contains(Players.getLocal())) 
+		return !Players.getLocal().isMoving() && (Inventory.isFull() && !Attributes.BANK_AREA.contains(Players.getLocal())) 
 				|| (!Inventory.isFull() && !Attributes.D_AREA.contains(Players.getLocal()));
 	}
 
@@ -27,9 +25,7 @@ public class WalkingEvent extends Event {
 
 		else {
 			if(path == null){
-				double d1 = Calculations.distanceTo(Attributes.BANKING_PATH_1[0]),
-						d2 = Calculations.distanceTo(Attributes.BANKING_PATH[0]);
-				if(d1 < d2) {
+				if(Attributes.D_AREA_1.contains(Players.getLocal().getLocation())){
 					path = Attributes.BANKING_PATH_1;
 				} else {
 					path = Attributes.BANKING_PATH;

@@ -15,7 +15,9 @@ public class Attributes {
 								D_AREA = new Area(new Tile[] { new Tile(2595, 3418, 0), new Tile(2595, 3428, 0), 
 																new Tile(2608, 3428, 0), new Tile(2608, 3418, 0), 
 																new Tile(2615, 3418, 0), new Tile(2615, 3408, 0), 
-																new Tile(2600, 3408, 0), new Tile(2600, 3418, 0) });
+																new Tile(2600, 3408, 0), new Tile(2600, 3418, 0) }),
+								D_AREA_1 = new Area(new Tile[] { new Tile(2600, 3418, 0), new Tile(2615, 3418, 0), new Tile(2615, 3407, 0), 
+										new Tile(2600, 3407, 0) });;
 
 	public static NPC fishSpot = null;
 
