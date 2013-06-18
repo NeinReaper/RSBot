@@ -12,7 +12,7 @@ public class WidgetEvent extends Event {
 	}
 	
 	@Override
-	public boolean accept() {
+	public boolean accept() {//i realize this is an empty condition
 		return true;
 	}
 
